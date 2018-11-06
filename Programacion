@@ -1,0 +1,66 @@
+int R = 11;
+int G = 9;
+int B = 10;
+int boton = 7;
+int estado;
+int boton2 = 5;
+int lasvecesquemeaquerido = 0;
+
+void setup (){
+  pinMode(R,OUTPUT);
+  pinMode(G,OUTPUT);
+  pinMode(B,OUTPUT); 
+  pinMode(boton,INPUT_PULLUP);
+  pinMode(boton2,INPUT_PULLUP);
+
+}
+
+void loop (){
+  {estado =  digitalRead (boton);
+  Serial.println(lasvecesquemeaquerido);
+  
+  if (estado == 0){
+  lasvecesquemeaquerido++;
+    delay(100);
+  }
+  }
+  
+  {estado =  digitalRead (boton2);
+  Serial.println(lasvecesquemeaquerido);
+  
+  if (estado == 0){
+  lasvecesquemeaquerido--;
+    delay(100);
+  }
+  }
+  
+  if (lasvecesquemeaquerido == 0){
+  digitalWrite(R,LOW);
+  digitalWrite(G,LOW);
+  digitalWrite(B,LOW);
+ }
+  
+  if ( lasvecesquemeaquerido == 1){
+ digitalWrite(R,HIGH);
+    delay(50);
+  digitalWrite(R,LOW);
+    delay(5);
+  }
+  
+  if ( lasvecesquemeaquerido == 2){
+  digitalWrite(G,HIGH);
+    delay(50);
+  digitalWrite(G,LOW);
+    delay(5);
+    
+  }
+  if (lasvecesquemeaquerido == 3) {
+  digitalWrite(B,HIGH);
+    delay(50);
+  digitalWrite(B,LOW);
+    delay(5);
+  }
+  if(lasvecesquemeaquerido>3){
+  lasvecesquemeaquerido=0;
+  }
+}
